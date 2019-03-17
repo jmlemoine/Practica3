@@ -28,7 +28,7 @@ public class BootStrapServicios {
     }
 
     /*
-           Ejecuta cualquier consulta SQL que se le pase
+           Ejecutar cualquier consulta SQL que se le pase
            como parámetro.
      */
 
@@ -44,7 +44,7 @@ public class BootStrapServicios {
     }
 
     /*
-            Crea todas las tablas por medio de SQL.
+            Crear todas las tablas por medio de SQL.
      */
 
     public static void crearTablas() throws SQLException {

@@ -24,9 +24,6 @@ public class Main {
 
             Enrutamiento.crearRutas();
 
-            // Deteniendo el servicio de Base de datos (no se usará por ahora pues no es necesario).
-            // ServicioBootstrap.detenerBaseDatos();
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -58,10 +58,10 @@ public class ArticuloServicios  {
         Connection conexion = BaseDatosServicios.getInstancia().getConexion();
 
         try {
-            // Crealo si no existe y si existe actualizalo.
+            // Crear un artículo si no existe y si existe lo actualiza.
             String articuloEncontrado = "SELECT * FROM articulos WHERE id = " + id + ";";
 
-            // Ejecuta el query pasado por parámetro "usuarioDefecto".
+            // Ejecutar el query pasado por parámetro "usuarioDefecto".
             PreparedStatement prepareStatement = conexion.prepareStatement(articuloEncontrado);
             ResultSet rs = prepareStatement.executeQuery();
 
@@ -69,7 +69,7 @@ public class ArticuloServicios  {
                 ArrayList<Comentario> comentarios = ComentarioServicios.listarComentarios(rs.getLong("id"));
                 ArrayList<Etiqueta> etiquetas = EtiquetaServicios.conseguirEtiquetas(rs.getLong("id"));
 
-                // TODO Obtener los verdaderos datos del usuario
+                // TODO Conseguir los verdaderos datos del usuario
                 articulo = new Articulo(
                         rs.getLong("id"),
                         rs.getNString("titulo"),
@@ -98,12 +98,12 @@ public class ArticuloServicios  {
         Connection conexion = BaseDatosServicios.getInstancia().getConexion();
 
         try {
-            // Crealo si no existe y si existe actualizalo.
+            // Crearlo si no existe y si existe actualizarlo.
             String articuloNuevo = "MERGE INTO articulos \n" +
                     "KEY(ID) \n" +
                     "VALUES (" + id + ",'" + titulo + "','" + cuerpo + "'," + usuarioID + ",'" + fecha + "');";
 
-            // Ejecuta el query pasado por parámetro "usuarioDefecto".
+            // Ejecutar el query pasado por parámetro "usuarioDefecto".
             PreparedStatement prepareStatement = conexion.prepareStatement(articuloNuevo);
 
             // Si se ejecutó el query bien pues la cantidad de filas de la tabla debe ser mayor a 0, pues se ha insertado una fila.
@@ -131,7 +131,7 @@ public class ArticuloServicios  {
             // Consultando y eliminando el articulo que tenga el id indicando.
             String eliminarArticuloQuery = "DELETE FROM articulos where ID = " + id + ";";
 
-            // Ejecuta el query pasado por parámetro "usuarioDefecto".
+            // Ejecutar el query pasado por parámetro "usuarioDefecto".
             PreparedStatement prepareStatement = conexion.prepareStatement(eliminarArticuloQuery);
 
             // Si se ejecutó el query bien pues la cantidad de filas de la tabla debe ser mayor a 0, pues se ha insertado una fila.
@@ -154,10 +154,10 @@ public class ArticuloServicios  {
         Connection conexion = BaseDatosServicios.getInstancia().getConexion();
 
         try {
-            // Crealo si no existe y si existe actualizalo.
+            // Crearlo si no existe y si existe actualizarlo.
             String conseguirTamanoTabla = "SELECT TOP 1 * FROM articulos ORDER BY ID DESC;";
 
-            // Ejecuta el query pasado por parámetro "usuarioDefecto".
+            // Ejecutar el query pasado por parámetro "usuarioDefecto".
             PreparedStatement prepareStatement = conexion.prepareStatement(conseguirTamanoTabla);
             ResultSet resultado = prepareStatement.executeQuery();
             while(resultado.next()){

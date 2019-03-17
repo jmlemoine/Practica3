@@ -13,11 +13,11 @@ public class UsuarioServicios {
         try {
             Usuario usu = buscarUsuario(1);
             if(usu == null) {
-                // Crealo si no existe y si existe actualizalo.
+                // Crearlo si no existe y si existe actualizarlo.
                 String usuarioDefecto = "INSERT INTO usuarios \n" +
                         "VALUES (1, 'admin', '1234', true, true, null);";
 
-                // Ejecuta el query pasado por parámetro "usuarioDefecto".
+                // Ejecutar el query pasado por parámetro "usuarioDefecto".
                 PreparedStatement prepareStatement = conexion.prepareStatement(usuarioDefecto);
 
                 // Si se ejecutó el query bien pues la cantidad de filas de la tabla debe ser mayor a 0, pues se ha insertado una fila.
@@ -44,12 +44,12 @@ public class UsuarioServicios {
         Connection conexion = BaseDatosServicios.getInstancia().getConexion();
 
         try {
-            // Crealo si no existe y si existe actualizalo.
+            // Crearlo si no existe y si existe actualizarlo.
             String usuarioNuevo = "MERGE INTO usuarios \n" +
                     "KEY(ID) \n" +
                     "VALUES (" + id + "," + usuario + "," + password + "," + administador + "," + autor + ", " + null + ");";
 
-            // Ejecuta el query pasado por parámetro "usuarioDefecto".
+            // Ejecutar el query pasado por parámetro "usuarioDefecto".
             PreparedStatement prepareStatement = conexion.prepareStatement(usuarioNuevo);
 
             // Si se ejecutó el query bien pues la cantidad de filas de la tabla debe ser mayor a 0, pues se ha insertado una fila.
@@ -97,11 +97,11 @@ public class UsuarioServicios {
         Connection conexion = BaseDatosServicios.getInstancia().getConexion();
 
         try {
-            // Crealo si no existe y si existe actualizalo.
+            // Crearlo si no existe y si existe actualizarlo.
             String usuarioNuevo = "UPDATE usuarios \n" +
                     "SET sesion='" + sesion + "' WHERE id=" + id + " ;";
 
-            // Ejecuta el query pasado por parámetro "usuarioDefecto".
+            // Ejecutar el query pasado por parámetro "usuarioDefecto".
             PreparedStatement prepareStatement = conexion.prepareStatement(usuarioNuevo);
 
             // Si se ejecutó el query bien pues la cantidad de filas de la tabla debe ser mayor a 0, pues se ha insertado una fila.
@@ -172,10 +172,10 @@ public class UsuarioServicios {
         Connection conexion = BaseDatosServicios.getInstancia().getConexion();
 
         try {
-            // Crealo si no existe y si existe actualizalo.
+            // Crearlo si no existe y si existe actualizalo.
             String conseguirTamanoTabla = "SELECT TOP 1 * FROM usuarios ORDER BY ID DESC;";
 
-            // Ejecuta el query.
+            // Ejecutar el query.
             PreparedStatement prepareStatement = conexion.prepareStatement(conseguirTamanoTabla);
             ResultSet resultado = prepareStatement.executeQuery();
             while(resultado.next()){

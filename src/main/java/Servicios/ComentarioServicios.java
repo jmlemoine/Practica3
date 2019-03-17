@@ -15,7 +15,7 @@ public class ComentarioServicios {
             // Consultando todos los articulos.
             String comentariosQuery = "SELECT * FROM comentarios WHERE articuloid = " + articuloID + ";";
 
-            // Ejecuta el query pasado por parámetro "usuarioDefecto".
+            // Ejecutar el query pasado por parámetro "usuarioDefecto".
             Statement statement = conexion.createStatement();
             ResultSet resultado = statement.executeQuery(comentariosQuery);
 
@@ -50,12 +50,12 @@ public class ComentarioServicios {
         Connection conexion = BaseDatosServicios.getInstancia().getConexion();
 
         try {
-            // Crealo si no existe y si existe actualizalo.
+            // Crearlo si no existe y si existe actualizarlo.
             String comentarioNuevo = "MERGE INTO comentarios \n" +
                     "KEY(ID) \n" +
                     "VALUES (" + id + ",'" + comentario + "'," + autor + "," + articuloID + ");";
 
-            // Ejecuta el query pasado por parámetro "usuarioDefecto".
+            // Ejecutar el query pasado por parámetro "usuarioDefecto".
             PreparedStatement prepareStatement = conexion.prepareStatement(comentarioNuevo);
 
             // Si se ejecutó el query bien pues la cantidad de filas de la tabla debe ser mayor a 0, pues se ha insertado una fila.
@@ -79,10 +79,10 @@ public class ComentarioServicios {
         Connection conexion = BaseDatosServicios.getInstancia().getConexion();
 
         try {
-            // Crealo si no existe y si existe actualizalo.
+            // Crearlo si no existe y si existe actualizarlo.
             String conseguirTamanoTabla = "SELECT TOP 1 * FROM comentarios ORDER BY ID DESC;";
 
-            // Ejecuta el query.
+            // Ejecutar el query.
             PreparedStatement prepareStatement = conexion.prepareStatement(conseguirTamanoTabla);
             ResultSet resultado = prepareStatement.executeQuery();
             while(resultado.next()){
